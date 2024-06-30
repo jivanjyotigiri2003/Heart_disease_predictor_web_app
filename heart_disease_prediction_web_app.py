@@ -10,8 +10,8 @@ import pickle
 import streamlit as st
 from PIL import Image
 
-loaded_model = pickle.load(open('C:/Users/jivan/OneDrive/Desktop/ml model deployment/heart_disease_prediction_model.sav', 'rb'))
-sc = pickle.load(open('C:/Users/jivan/OneDrive/Desktop/ml model deployment/scaler.sav', 'rb'))
+loaded_model = pickle.load(open('heart_disease_prediction_model.sav', 'rb'))
+sc = pickle.load(open('scaler.sav', 'rb'))
 
 def heart_disease_prediction(in_data):
     scaled_features = [3, 4, 7, 9]
@@ -31,7 +31,7 @@ def main():
     
     st.title("Heart Disease Prediction")
     st.markdown("## Predict your heart health with our machine learning model")
-    st.image(Image.open('C:/Users/jivan/OneDrive/Desktop/ml model deployment/heart_image.jpg'), use_column_width=True)
+    st.image(Image.open('heart_image.jpg'), use_column_width=True)
 
     st.sidebar.header("User Input Parameters")
     age = st.sidebar.number_input("Age", min_value=1, max_value=120, value=52)
