@@ -7,8 +7,8 @@ This is a temporary script file.
 import numpy as np
 import pickle
 
-loaded_model = pickle.load(open('C:/Users/jivan/OneDrive/Desktop/ml model deployment/heart_disease_prediction_model.sav', 'rb'))
-sc = pickle.load(open('C:/Users/jivan/OneDrive/Desktop/ml model deployment/scaler.sav', 'rb'))
+loaded_model = pickle.load(open('heart_disease_prediction_model.sav', 'rb'))
+sc = pickle.load(open('scaler.sav', 'rb'))
 
 scaled_features = [3, 4, 7, 9]
 
