@@ -6,6 +6,7 @@ Created on Sun Jun 30 17:00:24 2024
 """
 
 import numpy as np
+import pandas as pd
 import pickle
 import streamlit as st
 from PIL import Image
@@ -15,12 +16,17 @@ sc = pickle.load(open('scaler.sav', 'rb'))
 
 def heart_disease_prediction(in_data):
     scaled_features = [3, 4, 7, 9]
-    input_data = np.array([in_data])
-
-    input_data[:, scaled_features] = sc.transform(input_data[:, scaled_features])
-
-    prediction = loaded_model.predict(input_data)
-
+    
+    column_names = ['age', 'sex', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalach', 'exang', 'oldpeak', 'slope', 'ca', 'thal']
+    
+    input_df = pd.DataFrame([in_data], columns=column_names)
+    
+    input_df.iloc[:, scaled_features] = sc.transform(input_df.iloc[:, scaled_features])
+    
+    input_data_scaled = input_df.values
+    
+    prediction = loaded_model.predict(input_data_scaled)
+    
     if prediction == 1:
         return 'The person has heart disease'
     else:
